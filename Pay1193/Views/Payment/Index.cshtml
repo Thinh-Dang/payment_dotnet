@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PaymentRecordIndexViewModel>
+
+@{
+    ViewBag.Title = "Payments";
+}
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Payroll List</li>
+                </ol>
+            </nav><br />
+            <div class="row">
+                <a class="btn btn-xs btn-outline-success float-md-right"
+                   asp-controller="Payment" asp-action="Create">New Pay</a>
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Pay Date</th>
+                            <th>Month</th>
+                            <th>Tax Year</th>
+                            <th>Total Earnings</th>
+                            <th>Total Deductions</th>
+                            <th>Net Pay</th>
+                            <th class="text-warning">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a>@item.FullName</a>
+                                </td>
+                                <td>
+                                    @item.PayDate
+                                </td>
+                                <td>
+                                    @item.PayMonth
+                                </td>
+                                <td>
+                                    @item.Year
+                                </td>
+                                <td>
+                                    $@item.TotalEarnings
+                                </td>
+                                <td>$@item.TotalDeductions</td>
+                                <td>$@item.NetPayment</td>
+                                <td>
+                                    <a class="text-success"
+                                   asp-controller="Payment"
+                                   asp-action="Detail"
+                                   asp-route-id="@item.Id"><i class="fas fa-bars"></i>Preview Payslip</a>
+
+                                    <a class="text-danger"
+                                   asp-controller="Payment"
+                                   asp-action=""
+                                   asp-route-id="@item.Id"><i class="fas fa-trash-alt"></i>Payslip Pdf</a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

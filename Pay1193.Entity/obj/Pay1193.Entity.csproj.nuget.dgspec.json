@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MaiVanPhuongVu\\Desktop\\project\\Pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj": {}
+    "C:\\Users\\DELL\\source\\repos\\pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MaiVanPhuongVu\\Desktop\\project\\Pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj": {
+    "C:\\Users\\DELL\\source\\repos\\pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MaiVanPhuongVu\\Desktop\\project\\Pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj",
         "projectName": "Pay1193.Entity",
-        "projectPath": "C:\\Users\\MaiVanPhuongVu\\Desktop\\project\\Pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj",
-        "packagesPath": "C:\\Users\\MaiVanPhuongVu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MaiVanPhuongVu\\Desktop\\project\\Pay1193\\Pay1193.Entity\\obj\\",
+        "projectPath": "C:\\Users\\DELL\\source\\repos\\pay1193\\Pay1193.Entity\\Pay1193.Entity.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DELL\\source\\repos\\pay1193\\Pay1193.Entity\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\MaiVanPhuongVu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

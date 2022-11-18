@@ -1,0 +1,144 @@
+﻿@model PaymentRecordDetailViewModel
+
+@{
+    ViewBag.Title = "Computation Detail";
+}
+
+<div class="flex-column px-4">
+    <div class="head full-width d-flex flex-row justify-content-between"> 
+        <div class="content">
+            <p class="font-weight-bold">PayCompute LTD</p>
+            <p class="address">Address: @Model.Employee.Address</p>
+        </div>
+        <div class="content">
+            <p class="font-weight-bold">PayDate: @Model.PayDate</p>
+            <p class="tax-code">Tax Code : @Model.TaxCode</p>
+            <p class="year">Year : @Model.Year</p>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="head full-width d-flex flex-row justify-content-between">
+            <p class="font-weight-bold">Employee's Name: @Model.FullName</p>
+            <p class="font-weight-bold">Nationnal Insurance Number: @Model.NiNo</p>
+        </div>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>Earnings</th>
+                    <th>Hours</th>
+                    <th>Rates</th>
+                    <th>Amount</th>
+                    <th>Deductions</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="font-weight-bold">
+                        Basic :
+                    </td>
+                    <td>
+                        @Model.HoursWorked
+                    </td>
+                    <td>
+                        @Model.HourlyRate
+                    </td>
+                    <td>
+                        $@Model.ContractualEarnings
+                    </td>
+                    <td class="font-weight-bold">
+                        Tax : 
+                    </td>
+                    <td>$@Model.Tax</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">
+                        Overtime :
+                    </td>
+                    <td>
+                        @Model.OvertimeHours
+                    </td>
+                    <td>
+                        @Model.OvertimeRate
+                    </td>
+                    <td>
+                        $@Model.OvertimeEarnings
+                    </td>
+                    <td class="font-weight-bold">
+                        NIC : 
+                    </td>
+                    <td>$@Model.NIC</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">
+                       
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td class="font-weight-bold">
+                        Union :
+                    </td>
+                    <td>$@Model.UnionFee</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td class="font-weight-bold">
+                        SLC : 
+                    </td>
+                    <td>$@Model.SLC</td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">
+                        Total: 
+                    </td>
+                    <td>
+                        @Model.ContractualHours
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        $@Model.TotalEarnings
+                    </td>
+                    <td class="font-weight-bold">
+                    </td>
+                    <td>$@Model.TotalDeductions</td>
+                </tr>
+
+            </tbody>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>NET PAY:</th>
+                    <th>$@Model.NetPayment</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>  
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

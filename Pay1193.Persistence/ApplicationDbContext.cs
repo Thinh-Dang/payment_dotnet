@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Pay1193.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +24,7 @@ namespace Pay1193.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Configure domain classes using modelBuilder here..
-
+            
         }
     }
 }

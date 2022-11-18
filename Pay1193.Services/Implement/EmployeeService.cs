@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Pay1193.Entity;
 using Pay1193.Persistence;
 using System;
@@ -40,16 +41,28 @@ namespace Pay1193.Services.Implement
             return _context.Employees.ToList();
         }
 
-       
+
 
         public decimal StudentLoanRepaymentAmount(int id, decimal totalAmount)
         {
-            throw new NotImplementedException();
+            var studentLoanAmount = 0.0m;
+            var employee = GetById(id);
+            if (employee.StudentLoan == StudentLoan.Yes && totalAmount > 1577)
+            {
+                studentLoanAmount = (totalAmount - 1577) * 0.09m;
+            }
+            else
+            {
+                studentLoanAmount = 0;
+            }
+            return studentLoanAmount;
         }
 
-        public decimal UnionFee(int id)
+        public decimal UnionFees(int id)
         {
-            throw new NotImplementedException();
+            var employee = GetById(id);
+            var fee = employee.UnionMember == UnionMember.Yes ? 10m : 0;
+            return fee;
         }
 
         public Task UpdateAsync(Employee employee)
@@ -60,6 +73,14 @@ namespace Pay1193.Services.Implement
         public Task UpdateById(int id)
         {
             throw new NotImplementedException();
+        }
+        public IEnumerable<SelectListItem> GetAllEmployeesForPayroll()
+        {
+            return GetAll().Select(emp => new SelectListItem()
+            {
+                Text = emp.FullName,
+                Value = emp.Id.ToString()
+            });
         }
     }
 }

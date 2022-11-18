@@ -7,12 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>(opts =>
+builder.Services.AddDbContext<DbContext ,ApplicationDbContext>(opts =>
 {
-    opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Pay1193"));
 });
 
 builder.Services.AddScoped<IEmployee, EmployeeService>();
+builder.Services.AddScoped<IPayService, PayService>();
+builder.Services.AddScoped<ITaxService, TaxService>();
+builder.Services.AddScoped<INationalInsuranceService, NationalInsureanceService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Pay1193.props" />
+</Project>

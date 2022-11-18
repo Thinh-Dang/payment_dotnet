@@ -1,4 +1,5 @@
-﻿using Pay1193.Entity;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Pay1193.Entity;
 using Pay1193.Persistence;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Pay1193.Services.Implement
         {
             _context = context;
         }
-        public decimal ContractualEarning(decimal contractualHours, decimal hoursWorked, decimal hourlyRate)
+        public decimal ContractualEarnings(decimal contractualHours, decimal hoursWorked, decimal hourlyRate)
         {
             if(hoursWorked < contractualHours)
             {
@@ -31,49 +32,72 @@ namespace Pay1193.Services.Implement
             return contractualEarnings;
         }
 
-        public Task CreateAsync(PaymentRecord paymentRecord)
+        public async Task CreateAsync(PaymentRecord paymentRecord)
         {
-            throw new NotImplementedException();
+            await _context.PaymentRecords.AddAsync(paymentRecord);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<PaymentRecord> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.PaymentRecords.ToList();
         }
 
         public PaymentRecord GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.PaymentRecords.Where(u => u.Id == id).FirstOrDefault();
+        }
+
+        public IEnumerable<SelectListItem> GetAllTaxYears()
+        {
+            var allTaxYear = _context.TaxYears.Select(u => new SelectListItem
+            {
+                Text = u.YearOfTax,
+                Value = u.Id.ToString()
+            });
+            
+            return allTaxYear;
         }
 
         public TaxYear GetTaxYearById(int id)
         {
-            throw new NotImplementedException();
+            return _context.TaxYears.Where(u => u.Id == id).FirstOrDefault();
         }
 
         public decimal NetPay(decimal totalEarnings, decimal totalDeduction)
         {
-            throw new NotImplementedException();
+            return totalEarnings - totalDeduction;
         }
 
-        public decimal OvertimeEarnings(decimal overtimeEarnings, decimal contractualEarnings)
+        public decimal OvertimeEarnings(decimal overtimeRate, decimal overtimeHrs)
         {
-            throw new NotImplementedException();
+            return overtimeHrs * overtimeRate;
         }
 
-        public decimal OverTimeHours(decimal hoursWorked, decimal contractualHours)
+        public decimal OvertimeHours(decimal hoursWorked, decimal contractualHours)
         {
-            throw new NotImplementedException();
+            if (hoursWorked <= contractualHours)
+            {
+                overTimeHours = 0.00m;
+            }    
+            else if (hoursWorked > contractualHours)
+            {
+                overTimeHours= hoursWorked - contractualHours;
+            }
+            return overTimeHours;
         }
 
         public decimal OvertimeRate(decimal hourlyRate)
         {
-            throw new NotImplementedException();
+            return hourlyRate * 1.5m;
         }
 
         public decimal TotalDeduction(decimal tax, decimal nic, decimal studentLoanRepayment, decimal unionFees)
         {
-            throw new NotImplementedException();
+            return tax + nic + studentLoanRepayment + unionFees;
         }
+
+        public decimal TotalEarnings(decimal overtimeEarnings, decimal contractualEarnings)
+            => overtimeEarnings + contractualEarnings;
     }
 }
